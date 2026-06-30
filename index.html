@@ -448,35 +448,6 @@
     touchX = null;
   }, { passive: true });
 
-  // ----- Gincana interactive calculator -----
-  const listsEl = document.getElementById('lists');
-  function updateGincana() {
-    const n = parseInt(listsEl.value, 10);   // 1..4
-    const pct = n / 4 * 100;                  // 25,50,75,100
-    const pts = (pct / 100 * 10);             // 2.5 .. 10
-    const fmt = (v) => v.toFixed(1).replace('.', ',').replace(',0', '');
-    const ptsTxt = pts.toFixed(1).replace('.', ',');
-
-    document.getElementById('score').textContent = ptsTxt;
-    document.getElementById('pct').textContent = pct + '%';
-    document.getElementById('bar').style.width = pct + '%';
-    document.getElementById('f1').textContent = n;
-    document.getElementById('f2').textContent = pct + '%';
-    document.getElementById('f3').textContent = ptsTxt + ' pts';
-
-    // recolor score depending on full score
-    const score = document.getElementById('score');
-    const pctEl = document.getElementById('pct');
-    if (n === 4) {
-      score.className = 'text-6xl sm:text-7xl bg-gradient-to-br from-teal to-teal-light bg-clip-text text-transparent';
-      pctEl.className = 'text-teal-600';
-    } else {
-      score.className = 'text-6xl sm:text-7xl bg-gradient-to-br from-coral to-teal bg-clip-text text-transparent';
-      pctEl.className = 'text-coral-600';
-    }
-  }
-  listsEl.addEventListener('input', updateGincana);
-
   // init
   render();
   updateGincana();
